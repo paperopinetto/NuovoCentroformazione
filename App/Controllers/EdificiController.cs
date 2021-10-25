@@ -65,21 +65,31 @@ namespace App.Controllers
            // return View(inputModel);
         }
 
-        public async Task<ActionResult> Detail(EdificioDetailViewModel inputModel)
+       public async Task<ActionResult> Detail(EdificioDetailViewModel inputModel)
+         
         {
+            {
 
-            Edificio edificio = await formazioneDbContext.Edifici.FirstOrDefaultAsync(m => m.IdEdificio == inputModel.IdEdificio.ToString());
-            edificio.ChangeLaboratorio(inputModel.Laboratorio);
-            await formazioneDbContext.SaveChangesAsync();
+                var edificio =  await formazioneDbContext.Edifici.FirstOrDefaultAsync(m => m.IdEdificio == inputModel.IdEdificio);
+
+               // inputModel.Laboratorio = edificio.
+                // Edificio edificio = await formazioneDbContext.Edifici.Where(m => m.IdEdificio == IdEdificio).FirstOrDefault();
+                // Edificio edificio = await formazioneDbContext.Edifici.FirstOrDefaultAsync(m => m.IdEdificio == inputModel.IdEdificio.ToString());
+                // edificio.ChangeLaboratorio(inputModel.Laboratorio);
+                // inputModel.Laboratorio = inputModel.Laboratorio;
 
 
 
+              
 
-            // return EdificioDetailViewModel.fromEntity(edificio)
-            return View(inputModel);
 
+
+                //  return EdificioDetailViewModel.fromEntity(edificio)
+                return View(inputModel);
+           
+           
         }
-
+        }
         //public async Task<IActionResult> Detail(int? idedificio)
         //{
         //    if (idedificio == null)

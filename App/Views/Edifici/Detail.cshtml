@@ -10,7 +10,8 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="labtitolo-tabella-bt">Cod dipartimento</label><br>
-                                <label class="labtesto-tabella-bt">@Model.CodiceDipartimento</label>
+                                    <label class="labtesto-tabella-bt"> @Model.IdEdificio</label>
+                               
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -48,7 +49,7 @@
                         <div class="col-md-4"></div>
                         <div class="col-md-6">
                             <a class="btn btn-outline-secondary" asp-action="Index"><i class="fas fa-reply"></i> Indice</a>&nbsp;
-                            <a class="btn btn-outline-info" asp-action="Edit" asp-route-IdDocente="@Model.IdEdificio"><i class="fas fa-edit"></i> Modifica</a>
+                            <a class="btn btn-outline-info" asp-action="Edit" asp-route-IdEdificio="@Model.IdEdificio"><i class="fas fa-edit"></i> Modifica</a>
                             <button class="btn btn-outline-danger" type="button" data-toggle="modal" data-target="#delete-modal"><i class="fas fa-trash-alt"></i> Cancella</button>
                         </div>
                     </div>
@@ -57,7 +58,7 @@
         </div>
     </div>
 </div>
-<form method="post" asp-action="Delete" asp-route-IdDocente="@Model.IdEdificio">
+<form method="post" asp-action="Delete" asp-route-IdEdificio="@Model.IdEdificio">
     <div id="delete-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="delete-modal-title" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
