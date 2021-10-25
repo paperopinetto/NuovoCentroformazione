@@ -1,0 +1,12 @@
+﻿
+@page
+
+
+@model App.Pages.TestModel.DipartimentoModel
+
+<p>ciaooo</p>
+<form>
+    <select asp-for="Dipartimento" asp-items="Html.GetEnumSelectList<dipartimento>()">
+        <option></option>
+    </select>
+</form>

@@ -1,0 +1,83 @@
+﻿@model IEnumerable<App.Models.InputModels.Lezioni.LezioneCreateInputModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CorsoId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DocenteId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdLezione)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NomeLezione)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CodiceCorso)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CodiceDocente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CodiceAula)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataInizioLezione)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataFineLezione)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CorsoId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DocenteId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdLezione)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomeLezione)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodiceCorso)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodiceDocente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodiceAula)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataInizioLezione)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataFineLezione)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

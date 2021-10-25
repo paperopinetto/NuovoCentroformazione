@@ -1,0 +1,45 @@
+@model DocenteCreateInputModel
+<form method="POST">
+    <div class="card">
+        <div class="card-header">Creazione scheda docente</div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm">
+                    <div class="card-text">
+                        <div class="row">
+                            <div class="col-12" asp-validation-summary="All"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="NominativoDocente"></label><br>
+                                    <input type="text" asp-for="NominativoDocente" class="form-control">
+                                    <span asp-validation-for="NominativoDocente"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="MateriaInsegnata"></label><br>
+                                    <input type="text" asp-for="MateriaInsegnata" class="form-control">
+                                    <span asp-validation-for="MateriaInsegnata"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12"><br></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5"></div>
+                            <div class="col-md-4"><a class="btn btn-outline-secondary" asp-action="Index"><i class="fas fa-reply"></i> Esci senza salvare</a>&nbsp;
+                            <button type="submit" class="btn btn-outline-success"><i class="fas fa-save"></i> Salva i dati</button></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+@section Scripts
+{
+    <partial name="_Validation"></partial>
+}

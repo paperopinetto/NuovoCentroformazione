@@ -1,0 +1,60 @@
+﻿@model App.Models.InputModels.Edifici.EdificioCreateInputModel
+<form method="post">
+    <div class="card-header">Creazione scheda edificio</div>
+    <div class="row">
+
+        <div class="col-md-4">
+
+            <div asp-validation-summary="All" class="text-danger"></div>
+
+
+
+            <div class="form-group">
+                <label asp-for="CodiceDipartimento" class="control-label"></label>
+                <input asp-for="CodiceDipartimento" class="form-control" />
+                <span asp-validation-for="CodiceDipartimento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Aula" class="control-label"></label>
+                <input asp-for="Aula" class="form-control" />
+                <span asp-validation-for="Aula" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Laboratorio" class="control-label"></label>
+                <input asp-for="Laboratorio" class="form-control" />
+                <span asp-validation-for="Laboratorio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Post" class="control-label"></label>
+                <input asp-for="Post" class="form-control" />
+                <span asp-validation-for="Post" class="text-danger"></span>
+            </div>
+
+
+        </div>
+
+
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-4">
+            <a class="btn btn-outline-secondary" asp-action="Index"><i class="fas fa-reply"></i> Esci senza salvare</a>&nbsp;
+            <button type="submit" class="btn btn-outline-success"><i class="fas fa-save"></i> Salva i dati</button>
+        </div>
+    </div>
+
+
+
+
+
+
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+</form>
+@section Scripts
+{
+    <partial name="_Validation"></partial>
+}
