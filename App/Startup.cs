@@ -33,11 +33,7 @@ namespace App
             });
 
             services.AddRazorPages();
-            services.AddControllersWithViews();
-
-
-
-
+            //services.AddControllersWithViews(); Questo non è necessario in quanto è già presente la dichiarazione services.AddMvc alla riga 30
 
             //Database
             services.AddDbContextPool<FormazioneDbContext>(optionsBuilder => {
@@ -82,15 +78,18 @@ namespace App
             });
 
             app.UseRouting();
-            app.UseEndpoints(endpoints => 
-            {
-            endpoints.MapRazorPages();
-            });
+
+            // Righe non necessarie
+            // app.UseEndpoints(endpoints => 
+            // {
+            // endpoints.MapRazorPages();
+            // });
 
             app.UseEndpoints(routeBuilder =>
             {
                 routeBuilder.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
                 routeBuilder.MapFallbackToController("{*path}", "Index", "Error");
+                routeBuilder.MapRazorPages();
             });
         }
     }
