@@ -9,8 +9,8 @@ using App.Models.ViewModels;
 using App.Models.Services.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using App.Models.Entities;
-using App.Models.ViewModels.edifici;
-using App.Models.InputModels.edifici;
+using App.Models.ViewModels.Edifici;
+using App.Models.InputModels.Edifici;
 
 namespace App.Controllers
 {

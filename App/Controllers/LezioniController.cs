@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using App.Models.InputModels.Lezioni;
 using App.Models.Services.Infrastructure;
 
-namespace App
+namespace App.Controllers
 {
     public class LezioniController : Controller
     {
