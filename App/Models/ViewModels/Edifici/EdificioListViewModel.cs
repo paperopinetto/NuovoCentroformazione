@@ -1,7 +1,7 @@
 ﻿using App.Models.InputModels.Edifici;
-using App.Models.ViewModels.edifici;
+using App.Models.ViewModels.Edifici;
 
-namespace App.Models.ViewModels.edifici
+namespace App.Models.ViewModels.Edifici
 {
     public class EdificioListViewModel 
     {
