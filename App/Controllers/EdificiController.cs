@@ -1,119 +1,88 @@
-﻿using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using App.Models.InputModels.Edifici;
-using App.Models.Services.Infrastructure;
-using Microsoft.EntityFrameworkCore;
-using App.Models.Entities;
+using App.Models.Services.Application.Edifici;
+using App.Models.ViewModels;
 using App.Models.ViewModels.Edifici;
+using Microsoft.AspNetCore.Mvc;
 
 namespace App.Controllers
 {
     public class EdificiController : Controller
     {
-        private readonly FormazioneDbContext formazioneDbContext;
-
-        public EdificiController(Models.Services.Infrastructure.FormazioneDbContext dbContext)
+        private readonly IEdificiService edifici;
+        public EdificiController(IEdificiService edifici)
         {
-           formazioneDbContext = dbContext;
+            this.edifici = edifici;
         }
 
-        // public IActionResult Index()
-        //{
-        //  return View();
-        //  }
-
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(EdificioListInputModel input)
         {
-            return View(await formazioneDbContext.Edifici.ToListAsync());
+            ViewData["Title"] = "Gestione edifici";
+            ListViewModel<EdificioViewModel> edificio = await edifici.GetEdificiAsync(input);
+            EdificioListViewModel viewModel = new()
+            {
+                Edificio = edificio,
+                Input = input
+            };
+
+            return View(viewModel);
         }
 
         public IActionResult Create()
         {
-            ViewData["Title"] = "Creazione nuovo edificio";
+            ViewData["Title"] = "Creazione scheda edificio";
             EdificioCreateInputModel inputModel = new();
 
             return View(inputModel);
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task< IActionResult> Create(EdificioCreateInputModel inputModel)
+        public async Task<IActionResult> Create(EdificioCreateInputModel inputModel)
         {
-            string CodiceDipartimento = inputModel.CodiceDipartimento;
-            string Aula = inputModel.Aula;
-            string Laboratorio = inputModel.Laboratorio;
-            string Posti = inputModel.Post;
-            var edificio = new Edificio(CodiceDipartimento, Aula, Laboratorio, Posti);
-
-            
-               formazioneDbContext .Add(edificio);
-              await formazioneDbContext.SaveChangesAsync();
-
-            TempData["ConfirmationMessage"] = "La scheda è stata creata con successo";
-            return RedirectToAction(nameof(Index));
-            //}
-           // return View(inputModel);
-        }
-
-       public async Task<ActionResult> Detail(EdificioDetailViewModel inputModel)
-         
-        {
+            if (ModelState.IsValid)
             {
-
-                var edificio =  await formazioneDbContext.Edifici.FirstOrDefaultAsync(m => m.IdEdificio == inputModel.IdEdificio);
-
-               // inputModel.Laboratorio = edificio.
-                // Edificio edificio = await formazioneDbContext.Edifici.Where(m => m.IdEdificio == IdEdificio).FirstOrDefault();
-                // Edificio edificio = await formazioneDbContext.Edifici.FirstOrDefaultAsync(m => m.IdEdificio == inputModel.IdEdificio.ToString());
-                // edificio.ChangeLaboratorio(inputModel.Laboratorio);
-                // inputModel.Laboratorio = inputModel.Laboratorio;
-
-
-
-              
-
-
-
-                //  return EdificioDetailViewModel.fromEntity(edificio)
-                return View(inputModel);
-           
-           
-        }
-        }
-        //public async Task<IActionResult> Detail(int? idedificio)
-        //{
-        //    if (idedificio == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    var employee = await formazioneDbContext.Edifici.FirstOrDefaultAsync(m => m.IdEdificio == idedificio.ToString());
-        //    if (employee == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    return View(EdificioCreateInputModel);
-        //}
-
-
-
-
-
-
-
-
-
-
-
-
-        public ActionResult Edit(EdificioCreateInputModel inputModel)
-        {
+                EdificioDetailViewModel edificio = await edifici.CreateEdificioAsync(inputModel);
+                TempData["ConfirmationMessage"] = "Il laboratorio è stato creato con successo";
+                return RedirectToAction(nameof(EdificiController.Edit), "Edifici", new { IdEdificio = edificio.IdEdificio });
+            }
 
             return View(inputModel);
         }
 
+        public async Task<IActionResult> Detail(string IdEdificio)
+        {
+            ViewData["Title"] = "Dettaglio scheda edificio";
+            EdificioDetailViewModel viewModel = await edifici.GetEdificioAsync(IdEdificio);
+            return View(viewModel);
+        }
 
+        public async Task<IActionResult> Edit(string IdEdificio)
+        {
+            ViewData["Title"] = "Modifica scheda edificio";
+            EdificioEditInputModel inputModel = await edifici.GetEdificioForEditingAsync(IdEdificio);
+            return View(inputModel);
+        }
 
+        [HttpPost]
+        public async Task<IActionResult> Edit(EdificioEditInputModel inputModel)
+        {
+            if (ModelState.IsValid)
+            {
+                EdificioDetailViewModel docente = await edifici.EditEdificioAsync(inputModel);
+                TempData["ConfirmationMessage"] = "I dati sono stati aggiornati con successo";
+                return RedirectToAction(nameof(EdificiController.Detail), "Edifici", new { IdEdificio = inputModel.IdEdificio });
+            }
 
+            ViewData["Title"] = "Modifica scheda laboratorio";
+            return View(inputModel);
+        }
 
+        [HttpPost]
+        public async Task<IActionResult> Delete(EdificioDeleteInputModel inputModel)
+        {
+            await edifici.DeleteEdificioAsync(inputModel);
+            TempData["ConfirmationMessage"] = "Il laboratorio è stato eliminato";
+            return RedirectToAction(nameof(DocentiController.Index));
+        }
     }
 }

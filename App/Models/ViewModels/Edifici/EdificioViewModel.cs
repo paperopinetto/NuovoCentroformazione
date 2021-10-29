@@ -1,10 +1,7 @@
-using App.Models.ValueTypes;
-
 namespace App.Models.ViewModels.Edifici
 {
     public class EdificioViewModel
     {
-
         public int Id { get; set; }
         public string IdEdificio { get; set; }
         public string CodiceDipartimento { get; set; }
@@ -15,6 +12,5 @@ namespace App.Models.ViewModels.Edifici
         public string Laboratorio { get; set; }
         public string Posti { get; set; }
         public string Note { get; set; }
-
     }
 }

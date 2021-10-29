@@ -25,13 +25,4 @@ namespace App.Models.Enums
         [Display(Name = "Estetista Terzo Anno")]
         ESTETISTA3
     }
-
-    
-
-
-
-
-
-
-
 }

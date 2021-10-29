@@ -1,7 +1,5 @@
-﻿using App.Models.Entities;
+using App.Models.Entities;
 using Microsoft.EntityFrameworkCore;
-using App.Models.InputModels.Lezioni;
-using App.Models.InputModels.Edifici;
 
 namespace App.Models.Services.Infrastructure
 {
@@ -61,9 +59,5 @@ namespace App.Models.Services.Infrastructure
                 entity.HasKey(edificio => edificio.Id);
             });
         }
-
-        public DbSet<App.Models.InputModels.Lezioni.LezioneCreateInputModel> LezioneCreateInputModel { get; set; }
-
-        public DbSet<App.Models.InputModels.Edifici.EdificioCreateInputModel> EdificioCreateInputModel { get; set; }
     }
 }

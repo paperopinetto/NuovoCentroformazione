@@ -5,6 +5,7 @@ using App.Customizations.ModelBinders;
 using App.Models.Options;
 using App.Models.Services.Application;
 using App.Models.Services.Application.Docenti;
+using App.Models.Services.Application.Edifici;
 using App.Models.Services.Infrastructure;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -32,9 +33,6 @@ namespace App
                 options.ModelBinderProviders.Insert(0, new DecimalModelBinderProvider());
             });
 
-            services.AddRazorPages();
-            //services.AddControllersWithViews(); Questo non è necessario in quanto è già presente la dichiarazione services.AddMvc alla riga 30
-
             //Database
             services.AddDbContextPool<FormazioneDbContext>(optionsBuilder => {
                 string connectionString = Configuration.GetSection("ConnectionStrings").GetValue<string>("Default");
@@ -46,6 +44,7 @@ namespace App
 
             services.AddSingleton<IErrorViewSelectorService, ErrorViewSelectorService>();
             services.AddTransient<IDocentiService, EfCoreDocentiService>();
+            services.AddTransient<IEdificiService, EfCoreEdificiService>();
             
             //Options
             services.Configure<DocenteOptions>(Configuration.GetSection("Docente"));
@@ -78,18 +77,9 @@ namespace App
             });
 
             app.UseRouting();
-
-            // Righe non necessarie
-            // app.UseEndpoints(endpoints => 
-            // {
-            // endpoints.MapRazorPages();
-            // });
-
-            app.UseEndpoints(routeBuilder =>
-            {
+            app.UseEndpoints(routeBuilder => {
                 routeBuilder.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
                 routeBuilder.MapFallbackToController("{*path}", "Index", "Error");
-                routeBuilder.MapRazorPages();
             });
         }
     }

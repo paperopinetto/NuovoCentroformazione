@@ -1,9 +1,12 @@
-﻿using App.Models.Options;
-using System;
+﻿using System;
 using System.Linq;
+using App.Customizations.ModelBinders;
+using App.Models.Options;
+using Microsoft.AspNetCore.Mvc;
 
 namespace App.Models.InputModels.Edifici
 {
+    [ModelBinder(BinderType = typeof(EdificioListInputModelBinder))]
     public class EdificioListInputModel
     {
         public EdificioListInputModel(string search, int page, string orderby, bool ascending, int limit, EdificioOrderOptions orderOptions)

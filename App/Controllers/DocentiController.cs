@@ -31,7 +31,7 @@ namespace App.Controllers
         public IActionResult Create()
         {
             ViewData["Title"] = "Creazione scheda docente";
-           DocenteCreateInputModel inputModel = new();
+            DocenteCreateInputModel inputModel = new();
 
             return View(inputModel);
         }
