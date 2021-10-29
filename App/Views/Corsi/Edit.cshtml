@@ -1,7 +1,8 @@
-﻿@model LezioneEditInputModel
+﻿
+@model CorsoEditInputModel
 <form method="POST">
     <div class="card">
-        <div class="card-header">Modifica scheda lezione</div>
+        <div class="card-header">Modifica scheda corso</div>
         <div class="card-body">
             <div class="row">
                 <div class="col-sm">
@@ -12,35 +13,16 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label asp-for="NomeLezione"></label><br>
-                                    <input type="text" asp-for="NomeLezione" class="form-control">
-                                    <span asp-validation-for="NomeLezione"></span>
+                                    <label asp-for="NomeCorso"></label><br>
+                                    <input type="text" asp-for="NomeCorso" class="form-control">
+                                    <span asp-validation-for="NomeCorso"></span>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label asp-for="CodiceCorso"></label><br>
-                                    <input type="text" asp-for="CodiceCorso" class="form-control">
-                                    <span asp-validation-for="CodiceCorso"></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12"><br></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label asp-for="CodiceDocente"></label><br>
-                                    <input type="text" asp-for="CodiceDocente" class="form-control">
-                                    <span asp-validation-for="CodiceDocente"></span>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label asp-for="CodiceAula"></label><br>
-                                    <input type="text" asp-for="CodiceAula" class="form-control">
-                                    <span asp-validation-for="CodiceAula"></span>
+                                    <label asp-for="CodiceDipartimento"></label><br>
+                                    <input type="text" asp-for="CodiceDipartimento" class="form-control">
+                                    <span asp-validation-for="CodiceDipartimento"></span>
                                 </div>
                             </div>
                         </div>
@@ -50,19 +32,37 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label asp-for="DataInizioLezione"></label><br>
-                                    <input type="text" asp-for="DataInizioLezione" class="form-control">
-                                    <span asp-validation-for="DataInizioLezione"></span>
+                                    <label asp-for="EdizioneCorso"></label><br>
+                                    <input type="text" asp-for="EdizioneCorso" class="form-control">
+                                    <span asp-validation-for="EdizioneCorso"></span>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label asp-for="DataFineLezione"></label><br>
-                                    <input type="text" asp-for="DataFineLezione" class="form-control">
-                                    <span asp-validation-for="DataFineLezione"></span>
-
-
+                                    <label asp-for="OreCorso"></label><br>
+                                    <input type="text" asp-for="OreCorso" class="form-control">
+                                    <span asp-validation-for="OreCorso"></span>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12"><br></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="DataInizioCorso"></label><br>
+                                    <input type="text" asp-for="DataInizioCorso" class="form-control">
+                                    <span asp-validation-for="DataInizioCorso"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="DataFineCorso"></label><br>
+                                    <input type="text" asp-for="DataFineCorso" class="form-control">
+                                    <span asp-validation-for="DataFineCorso"></span>
+
+       </div>
                             </div>
                         </div>
                         <div class="row">

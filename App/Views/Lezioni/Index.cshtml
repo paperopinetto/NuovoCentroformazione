@@ -1,83 +1,57 @@
-﻿@model IEnumerable<App.Models.InputModels.Lezioni.LezioneCreateInputModel>
-
-@{
-    ViewData["Title"] = "Index";
-}
-
-<h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.CorsoId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DocenteId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdLezione)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NomeLezione)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CodiceCorso)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CodiceDocente)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CodiceAula)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DataInizioLezione)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DataFineLezione)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.CorsoId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DocenteId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdLezione)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NomeLezione)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CodiceCorso)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CodiceDocente)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CodiceAula)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DataInizioLezione)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DataFineLezione)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+﻿@model App.Models.ViewModels.Lezioni.LezioneListViewModel
+<div class="row">
+    <div class="col-md">
+        <div class="card">
+            <div class="card-header">Gestione Lezioni</div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="card-text">
+                            <div class="row">
+                                <div class="col-md-2"><a class="btn btn-outline-secondary ml-3" asp-controller="Lezioni" asp-action="Create"><i class="fas fa-file-alt"></i> Nuovo</a></div>
+                                <div class="col-md-7"></div>
+                                <div class="col-md-3 d-flex align-items-center">
+                                    <form asp-controller="Lezioni" asp-action="Index" method="get">
+                                        <div class="input-group">
+                                            <input type="text" name="search" class="form-control" placeholder="Cerca lezioni..." aria-label="Cerca..." aria-describedby="search-button" value="@Model.Input.Search">
+                                            <div class="input-group-append">
+                                                <button class="input-group-text" id="search-button"><i class="fas fa-search"></i></button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12"><br></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3 titolo-tabella-bt"><lezione-order-link order-by="NominativoLezione" Input="@Model.Input">Nominativo Docente</lezione-order-link></div>
+                                <div class="col-md-2 titolo-tabella-bt">Nome Lezione</div>
+                                <div class="col-md-2 titolo-tabella-bt">Codice Corso</div>
+                                <div class="col-md-3 titolo-tabella-bt">Codice Aula</div>
+                                <div class="col-md-2"></div>
+                            </div>
+                            @foreach (var lezione in Model.Lezione.Results)
+                            {
+                                <hr>
+                                <div class="row">
+                                    <div class="col-md-3 testo-tabella-bt">@lezione.NomeLezione</div>
+                                    <div class="col-md-2 testo-tabella-bt">@lezione.CodiceCorso</div>
+                                    <div class="col-md-2 testo-tabella-bt">@lezione.CodiceAula</div>
+                                    <div class="col-md-3 testo-tabella-bt">@lezione.CodiceDocente</div>
+                                    <div class="col-md-2 d-flex align-items-center">
+                                        <a class="btn btn-outline-primary" asp-controller="Lezioni" asp-action="Detail" asp-route-IdDocente="@lezione.IdLezione"><i class="fas fa-info"></i> Dettaglio</a>
+                                    </div>
+                                </div>
+                            }
+                            <div class="row">
+                                <div class="col-md-12"><br></div>
+                            </div>
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

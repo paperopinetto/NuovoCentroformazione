@@ -1,5 +1,4 @@
-﻿@model App.Models.ViewModels.Edifici.EdificioDetailViewModel
-
+﻿@model App.Models.ViewModels.Lezioni.LezioneDetailViewModel
 <div class="card">
     <div class="card-header">Dettaglio docente</div>
     <div class="card-body">
@@ -9,47 +8,62 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="labtitolo-tabella-bt">Cod dipartimento</label><br>
-                                    <label class="labtesto-tabella-bt"> @Model.IdEdificio</label>
-                               
+                                <label class="labtitolo-tabella-bt">Nome lezione</label><br>
+                                <label class="labtesto-tabella-bt">@Model.NomeLezione</label>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="labtitolo-tabella-bt">Aula</label><br>
-                                <label class="labtesto-tabella-bt">@Model.Aula</label>
+                                <label class="labtitolo-tabella-bt">Codice corso</label><br>
+                                <label class="labtesto-tabella-bt">@Model.CodiceCorso</label>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12"><br></div>
                     </div>
-                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="labtitolo-tabella-bt">Codice docente</label><br>
+                                <label class="labtesto-tabella-bt">@Model.CodiceDocente</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="labtitolo-tabella-bt">Codice aula</label><br>
+                                <label class="labtesto-tabella-bt">@Model.CodiceAula</label>
+                            </div>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-md-12"><br></div>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="labtitolo-tabella-bt">Indirizzo</label><br>
-                                <label class="labtesto-tabella-bt">@Model.Indirizzo</label>
+                                <label class="labtitolo-tabella-bt">Data inizio lezione</label><br>
+                                <label class="labtesto-tabella-bt">@Model.DataInizioLezione</label>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="labtitolo-tabella-bt">Piano</label><br>
-                                <label class="labtesto-tabella-bt">@Model.Piano</label>
+                                <label class="labtitolo-tabella-bt">Data fine lezione</label><br>
+                                <label class="labtesto-tabella-bt">@Model.DataFineLezione</label>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12"><br></div>
+                        <label class="labtitolo-tabella-bt">Note</label><br>
+                        <label class="labtesto-tabella-bt">@Model.Note</label>
+
                     </div>
                     <div class="row">
                         <div class="col-md-4"></div>
                         <div class="col-md-6">
                             <a class="btn btn-outline-secondary" asp-action="Index"><i class="fas fa-reply"></i> Indice</a>&nbsp;
-                            <a class="btn btn-outline-info" asp-action="Edit" asp-route-IdEdificio="@Model.IdEdificio"><i class="fas fa-edit"></i> Modifica</a>
+                            <a class="btn btn-outline-info" asp-action="Edit" asp-route-IdLezione="@Model.IdLezione"><i class="fas fa-edit"></i> Modifica</a>
                             <button class="btn btn-outline-danger" type="button" data-toggle="modal" data-target="#delete-modal"><i class="fas fa-trash-alt"></i> Cancella</button>
                         </div>
                     </div>
@@ -58,7 +72,7 @@
         </div>
     </div>
 </div>
-<form method="post" asp-action="Delete" asp-route-IdEdificio="@Model.IdEdificio">
+<form method="post" asp-action="Delete" asp-route-IdDocente="@Model.IdLezione">
     <div id="delete-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="delete-modal-title" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -69,7 +83,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p>Stai per eliminare il docente e non potrai recuperarlo. Confermi l'eliminazione?</p>
+                    <p>Stai per eliminare la lezione e non potrai recuperarlo. Confermi l'eliminazione?</p>
                 </div>
                 <div class="modal-footer justify-content-between">
                     <button class="btn btn-light" type="button" data-dismiss="modal">Annulla</button>

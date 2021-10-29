@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace App.Models.InputModels.edifici
+namespace App.Models.InputModels.Edifici
 {
     public class EdificioEditInputModel
 
@@ -15,14 +15,5 @@ namespace App.Models.InputModels.edifici
         public string Laboratorio { get; set; }
         public string Posti { get; set; }
         public string Note { get; set; }
-
-
-
-
-
-
-
-
-
     }
 }

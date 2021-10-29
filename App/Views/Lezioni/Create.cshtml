@@ -1,73 +1,47 @@
-﻿@model App.Models.InputModels.Lezioni.LezioneCreateInputModel
-
-@{
-    ViewData["Title"] = "Create";
-}
-
-<h1>Create</h1>
-
-<h4>LezioneCreateInputModel</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="CorsoId" class="control-label"></label>
-                <input asp-for="CorsoId" class="form-control" />
-                <span asp-validation-for="CorsoId" class="text-danger"></span>
+﻿@model LezioneCreateInputModel
+<form method="POST">
+    <div class="card">
+        <div class="card-header">Creazione scheda lezione</div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm">
+                    <div class="card-text">
+                        <div class="row">
+                            <div class="col-12" asp-validation-summary="All"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="NomeLezione"></label><br>
+                                    <input type="text" asp-for="NomeLezione" class="form-control">
+                                    <span asp-validation-for="NomeLezione"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="CodiceDocente"></label><br>
+                                    <input type="text" asp-for="CodiceDocente" class="form-control">
+                                    <span asp-validation-for="CodiceDocente"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12"><br></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5"></div>
+                            <div class="col-md-4">
+                                <a class="btn btn-outline-secondary" asp-action="Index"><i class="fas fa-reply"></i> Esci senza salvare</a>&nbsp;
+                                <button type="submit" class="btn btn-outline-success"><i class="fas fa-save"></i> Salva i dati</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="DocenteId" class="control-label"></label>
-                <input asp-for="DocenteId" class="form-control" />
-                <span asp-validation-for="DocenteId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="IdLezione" class="control-label"></label>
-                <input asp-for="IdLezione" class="form-control" />
-                <span asp-validation-for="IdLezione" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="NomeLezione" class="control-label"></label>
-                <input asp-for="NomeLezione" class="form-control" />
-                <span asp-validation-for="NomeLezione" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CodiceCorso" class="control-label"></label>
-                <input asp-for="CodiceCorso" class="form-control" />
-                <span asp-validation-for="CodiceCorso" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CodiceDocente" class="control-label"></label>
-                <input asp-for="CodiceDocente" class="form-control" />
-                <span asp-validation-for="CodiceDocente" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CodiceAula" class="control-label"></label>
-                <input asp-for="CodiceAula" class="form-control" />
-                <span asp-validation-for="CodiceAula" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DataInizioLezione" class="control-label"></label>
-                <input asp-for="DataInizioLezione" class="form-control" />
-                <span asp-validation-for="DataInizioLezione" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DataFineLezione" class="control-label"></label>
-                <input asp-for="DataFineLezione" class="form-control" />
-                <span asp-validation-for="DataFineLezione" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+        </div>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+</form>
+@section Scripts
+{
+    <partial name="_Validation"></partial>
 }

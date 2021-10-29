@@ -1,31 +1,21 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using App.Models.InputModels.Edifici;
-
-using App.Models.ViewModels;
 using App.Models.Services.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using App.Models.Entities;
 using App.Models.ViewModels.Edifici;
-using App.Models.InputModels.Edifici;
 
 namespace App.Controllers
 {
     public class EdificiController : Controller
     {
-
         private readonly FormazioneDbContext formazioneDbContext;
 
         public EdificiController(Models.Services.Infrastructure.FormazioneDbContext dbContext)
         {
            formazioneDbContext = dbContext;
         }
-
-
-
 
         // public IActionResult Index()
         //{

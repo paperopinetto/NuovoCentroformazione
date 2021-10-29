@@ -1,12 +1,15 @@
-﻿using App.Models.InputModels.Edifici;
+﻿
+using App.Models.InputModels.Edifici;
 using App.Models.ViewModels.Edifici;
 
-namespace App.Models.ViewModels.Edifici
+namespace App.Models.ViewModels.Docenti
+
+
 {
     public class EdificioListViewModel 
     {
         public ListViewModel<EdificioViewModel> Edificio { get; set; }
-       public EdificioListViewModel Input { get; set; }
+        public EdificioListViewModel Input { get; set; }
 
         //int IPaginationInfo.CurrentPage => Input.Page;
         //int IPaginationInfo.TotalResults => Edificio.TotalCount;

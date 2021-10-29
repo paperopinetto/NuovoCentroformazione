@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace App.Models.InputModels.edifici
+namespace App.Models.InputModels.Edifici
 {
     public class EdificioDeleteInputModel
     {
