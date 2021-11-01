@@ -1,45 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace App.Models.InputModels.Corsi
 {
     public class CorsoEditInputModel
     {
-        [Required]
         public int Id { get; set; }
 
         public string IdCorso { get; set; }
 
-        [Required(ErrorMessage = "Il nominativo del dipartimento è obbligatorio"),
-        Display(Name = "Codice dipartimento")]
+        [Display(Name = "Codice Dipartimento")]
         public string CodiceDipartimento { get; set; }
 
-        [Required(ErrorMessage = "Edizione corso obbligatoria"),
-        Display(Name = "Edizione Corso")]
+        [Display(Name = "Edizione Corso")]
         public string EdizioneCorso { get; set; }
 
-        [Display(Name = "Nome corso")]
+        [Display(Name = "Nome Corso")]
         public string NomeCorso { get; set; }
 
-        [Display(Name = "Data inizio corso")]
-        public string DataInizioCorso{ get; set; }
+        [Display(Name = "Data Inizio Corso")]
+        public string DataInizioCorso { get; set; }
 
-        [Display(Name = "Data fine corso")]
+        [Display(Name = "Data Fine Corso")]
         public string DataFineCorso { get; set; }
 
-        [Display(Name = "Ore corso")]
+        [Display(Name = "Ore Corso")]
         public string OreCorso { get; set; }
 
+        [Display(Name = "Note")]
         public string Note { get; set; }
-
-
-
-
-
-
-
     }
 }

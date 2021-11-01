@@ -1,11 +1,12 @@
-﻿using App.Models.Options;
+﻿using App.Customizations.ModelBinders;
+using App.Models.Options;
+using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace App.Models.InputModels.Corsi
 {
+    [ModelBinder(BinderType = typeof(CorsoListInputModelBinder))]
     public class CorsoListInputModel
     {
         public CorsoListInputModel(string search, int page, string orderby, bool ascending, int limit, CorsoOrderOptions orderOptions)
@@ -33,9 +34,4 @@ namespace App.Models.InputModels.Corsi
         public int Limit { get; }
         public int Offset { get; }
     }
-
-
-
-
 }
-

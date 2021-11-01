@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace App.Models.ViewModels.Corsi
+﻿namespace App.Models.ViewModels.Corsi
 {
     public class CorsoDetailViewModel
     {
@@ -16,8 +11,5 @@ namespace App.Models.ViewModels.Corsi
         public string DataFineCorso { get; set; }
         public string OreCorso { get; set; }
         public string Note { get; set; }
-
-
-
     }
 }

@@ -1,12 +1,8 @@
 ﻿using App.Models.InputModels.Corsi;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace App.Models.ViewModels.Corsi
 {
-    public class CorsoListViewModel :IPaginationInfo
+    public class CorsoListViewModel : IPaginationInfo
     {
         public ListViewModel<CorsoViewModel> Corso { get; set; }
         public CorsoListInputModel Input { get; set; }
@@ -19,15 +15,5 @@ namespace App.Models.ViewModels.Corsi
         string IPaginationInfo.OrderBy => Input.OrderBy;
 
         bool IPaginationInfo.Ascending => Input.Ascending;
-
-
-
-
-
-
-
-
-
-
     }
 }
