@@ -1,16 +1,16 @@
-using App.Models.InputModels.Edifici;
+using App.Models.InputModels.Corsi;
 using Microsoft.AspNetCore.Mvc.TagHelpers;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace App.Customizations.TagHelpers
 {
-    public class LaboratorioOrderLinkTagHelper : AnchorTagHelper
+    public class NomeCorsoOrderLinkTagHelper : AnchorTagHelper
     {
         public string OrderBy { get; set; }
-        public EdificioListInputModel Input { get; set; }
+        public CorsoListInputModel Input { get; set; }
 
-        public LaboratorioOrderLinkTagHelper(IHtmlGenerator generator) : base(generator)
+        public NomeCorsoOrderLinkTagHelper(IHtmlGenerator generator) : base(generator)
         {
         }
 
